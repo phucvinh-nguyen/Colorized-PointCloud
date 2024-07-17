@@ -50,12 +50,6 @@ def lidar_callback(lidar_data):
             x, y = int(point_2d[0]), int(point_2d[1])
             
             if 0 <= x < cv_image.shape[1] and 0 <= y < cv_image.shape[0]:
-                print("x , y hop le:")
-                print (x)
-                print (y)
-                print("Kich thuoc anh")
-                print (cv_image.shape[1])
-                print (cv_image.shape[0])
                 # add RGB from image
                 b, g, r = cv_image[y, x]
                 # add r, g, b to one pack
@@ -66,8 +60,7 @@ def lidar_callback(lidar_data):
     header = std_msgs.msg.Header()
     header.stamp = lidar_data.header.stamp
     header.frame_id = lidar_data.header.frame_id
-
-    # new defined for new PointCloud2
+    
     fields = [
         pc2.PointField('x', 0, pc2.PointField.FLOAT32, 1),
         pc2.PointField('y', 4, pc2.PointField.FLOAT32, 1),
