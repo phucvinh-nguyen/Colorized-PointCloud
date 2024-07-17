@@ -42,7 +42,7 @@ def save_point_cloud_to_pcd(points_list, filename):
 def process_data(image_data, lidar_data):
     global count
     try:
-        # Sử dụng hàm này cho CompressedImage
+        # use for CompressedImage
         cv_image = bridge.compressed_imgmsg_to_cv2(image_data, "bgr8")
     except CvBridgeError as e:
         rospy.logerr(e)
@@ -74,7 +74,7 @@ def process_data(image_data, lidar_data):
                 new_point = [point.x, point.y, point.z, rgb]
                 points_list.append(new_point)
 
-    # Publish colored point cloud
+    # Publish colorized point cloud
     header = std_msgs.msg.Header()
     header.stamp = rospy.Time.now()  # or use lidar_data.header.stamp if synchronized
     header.frame_id = 'livox_frame'  # Change according to your frame setup
